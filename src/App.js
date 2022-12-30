@@ -1,25 +1,24 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
 
+const giftlist = ['SamSung Galaxy', 'iPhone 14', 'VinFast VF8', 'VinHome smart city', 'Macbook pro'];
+
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [gift, setGift] = useState('chưa có phần thưởng');
+
+    const handleGift = () => {
+        let index = Math.floor(Math.random() * giftlist.length);
+        setGift(giftlist[index]);
+    };
+
+    return (
+        <div className="App">
+            <header className="App-header">
+                <p>{gift}</p>
+                <button onClick={handleGift}>Take gift</button>
+            </header>
+        </div>
+    );
 }
 
 export default App;
